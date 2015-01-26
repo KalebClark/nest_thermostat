@@ -60,13 +60,15 @@ def main():
     parser = create_parser()
     (opts, args) = parser.parse_args()
 
+
+
     if (len(args)==0) or (args[0]=="help"):
         help()
         sys.exit(-1)
 
-    if (not opts.user) or (not opts.password):
-        print "how about specifying a --user and --password option next time?"
-        sys.exit(-1)
+    #if (not opts.user) or (not opts.password):
+    #    print "how about specifying a --user and --password option next time?"
+    #    sys.exit(-1)
 
     if opts.celsius:
         units = "C"
@@ -95,7 +97,9 @@ def main():
             sys.exit(-1)
         n.set_mode(args[1])
     elif (cmd == "away"):
-        n.toggle_away()
+        n.set_away(args[1])
+    elif (cmd == "showaway"):
+	n.show_away()
     elif (cmd == "show"):
         n.show_status()
     elif (cmd == "curtemp"):

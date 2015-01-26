@@ -99,6 +99,7 @@ class Nest:
 
         print mode
 
+
     def _set(self, data, which):
        if (self.debug): print json.dumps(data)
        url = "%s/v2/put/%s.%s" %  (self.transport_url, which, self.serial)
@@ -120,6 +121,9 @@ class Nest:
     def _set_device(self, data):
        self._set(data, "device")
 
+    def _set_structure(self, data):
+	self._set(data, "structure")
+
     def set_temperature(self, temp):
        return self._set_shared({
              "target_change_pending": True,
@@ -136,9 +140,24 @@ class Nest:
             "target_temperature_type": str(state)
         })
 
-    def toggle_away(self):
-        was_away = self.status['structure'][self.structure_id]['away']
-        data = '{"away":%s}' % ('false' if was_away else 'true')
+    def show_away(self):
+	# True = Away
+	# False = Home
+	mode = self.status['structure'][self.structure_id]['away']
+	return mode
+
+    def set_away(self, state):
+        #was_away = self.status['structure'][self.structure_id]['away']
+        #print was_away;	
+        if (state == "home"): 
+            data = '{"away": false}'
+        elif (state == "away"): 
+            data = '{"away": true}'
+        else:
+            print "Need real command"
+
+        print data
+        #data = '{"away":%s}' % ('false' if was_away else 'true')
         response = requests.post(self.transport_url + "/v2/put/structure." + self.structure_id,
                                  data = data,
                                  headers = {"user-agent":"Nest/1.1.0.10 CFNetwork/548.0.4",
