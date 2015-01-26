@@ -4,6 +4,8 @@
  
 *fork of pynest by Scott M Baker, smbaker@gmail.com, http://www.smbaker.com/*
 
+Changing several items for use in housepi
+
 ##Installation
 `[sudo] pip install nest-thermostat`
 
@@ -30,7 +32,8 @@ commands:
     temp <temperature>         ... set target temperature
     fan [auto|on]              ... set fan state
     mode [cool|heat|range|off] ... set fan state
-    away                       ... toggle away
+    away [home|away]           ... set away state
+    showaway                   ... print away state
     show                       ... show everything
     curtemp                    ... print current temperature
     curhumid                   ... print current humidity
