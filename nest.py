@@ -45,7 +45,7 @@ def help():
     print "    temp <temperature>         ... set target temperature"
     print "    fan [auto|on]              ... set fan state"
     print "    mode [cool|heat|range|off] ... set mode state"
-    print "    away                       ... toggle away"
+    print "    away [home|away]           ... set away state"
     print "    show                       ... show everything"
     print "    curtemp                    ... print current temperature"
     print "    curhumid                   ... print current humidity"
